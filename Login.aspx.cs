@@ -58,7 +58,30 @@ namespace TTSHWeb
         #region PageLoad
        
         #endregion
+	 protected  void btnLogin_Click(object sender, EventArgs e)
+        {
 
+            try
+            {
+                Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
+                System.Net.WebClient client = new System.Net.WebClient();
+                client.Headers.Add("content-type", "application/json");//set your header here, you can add multiple headers
+                string arr = client.DownloadString(string.Format("{0}api/User/{1}?&passWord={2}",Session["WebApiUrl"].ToString(),txtUserName.Text,txtPassword.Text));
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                tbl_User user = serializer.Deserialize<tbl_User>(arr);
+                if(user!=null)
+                {
+                    Session["UserID"] = user.Guid.ToString();
+                    FailureText.Text = "Login Success";
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                FailureText.Text = "Invalid Login Name/Password.";
+            }
+
+        }
         #region Methods
         // Sapna K: Method to get allowed menu names in session
         private void PopulateMenu()
