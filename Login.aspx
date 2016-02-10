@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TTSHWeb.Login" %>
+﻿<%@ Page Language="C#" Async="true" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TTSHWeb.Login" %>
 
 <!DOCTYPE html>
 
@@ -69,7 +69,7 @@
                             </p>
                             <%--   <input type="text" name="txtdomain" placeholder="Domain Name">--%>
                             <p>
-                                <asp:Button runat="server" CommandName="Login" Text="Login" ID="btnLogin" CssClass="action" OnClick="btnLogin_Click" />
+                                <asp:Button runat="server" CommandName="Login" Text="Login" ID="btnLogin" CssClass="action" />
                             </p>
                             <p style="color:red;">
 
