@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="logo-head img-responsive" href="#">
-                        <img src="~/images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"></a>
+                        <img src="~/Images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"></a>
                 </div>
                 <%--<div class="col-md-6">
                 <p class="top-search">
@@ -86,7 +86,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <img src="~/images/login-filler.jpg" alt="">
+                    <img src="~/Images/login-filler.jpg" alt="">
                 </div>
             </div>
         </div>
