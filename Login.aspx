@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="logo-head img-responsive" href="#">
-                        <img src="images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"></a>
+                        <img src="~/images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"></a>
                 </div>
                 <%--<div class="col-md-6">
                 <p class="top-search">
@@ -76,17 +76,9 @@
                                 <asp:Literal runat="server" ID="FailureText" />
                             </p>
                         </div>
-                        <%--  <div  style="padding:0px 0px 0px 20px">
-                            
-                                <a href="#">Forgot Password ?</a>
-                                <a href="#">Are you experiencing login problem ?</a>
-                            
-                        </div>--%>
+                    
                     </div>
-                    <%-- <p>
-                        <input type="checkbox">
-                        Remember me on this computer
-                    </p>--%>
+                   
                     <p>&nbsp;</p>
 
                     <h2>Clinical Research and Innovation Office<span>Clinical Research Unit</span></h2>
@@ -94,7 +86,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <img src="images/login-filler.jpg" alt="">
+                    <img src="~/images/login-filler.jpg" alt="">
                 </div>
             </div>
         </div>
