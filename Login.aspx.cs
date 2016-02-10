@@ -90,7 +90,7 @@ namespace TTSHWeb
                     DataTable dttable = new DataTable();
                     dttable = ToDataTable(collection);
 
-                    HttpContext.Current.Session["MenuDT"] = dttable;
+                    Session["MenuDT"] = dttable;
                     Response.Redirect("Dashboard.aspx", false);
 
                 }
