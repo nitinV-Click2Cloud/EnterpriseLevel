@@ -56,18 +56,7 @@ namespace TTSHWeb
         }
 
         #region PageLoad
-        protected  void btnLogin_Click(object sender, EventArgs e)
-        {
-
-            try { 
-        
-            }
-            catch (Exception ex)
-            {
-                FailureText.Text = "Invalid Login Name/Password.";
-            }
-            
-        }
+       
         #endregion
 
         #region Methods
