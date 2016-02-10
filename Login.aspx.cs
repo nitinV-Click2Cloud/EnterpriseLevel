@@ -91,7 +91,7 @@ namespace TTSHWeb
                     dttable = ToDataTable(collection);
 
                     Session["MenuDT"] = dttable;
-                    Response.Redirect("Dashboard.aspx", false);
+                    Response.Redirect("frmProject_Master.aspx", false);
 
                 }
                 else
