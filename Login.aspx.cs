@@ -76,7 +76,7 @@ namespace TTSHWeb
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     tbl_User user = serializer.Deserialize<tbl_User>(response.Content.ReadAsStringAsync().Result.ToString());
-                    HttpContext.Current.Session["UserID"] = user.Guid.ToString();
+                   Session["UserID"] = user.Guid.ToString();
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                      response = await client.GetAsync("api/Menu/");
