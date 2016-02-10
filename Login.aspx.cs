@@ -56,49 +56,11 @@ namespace TTSHWeb
         }
 
         #region PageLoad
-        protected async void btnLogin_Click(object sender, EventArgs e)
+        protected  void btnLogin_Click(object sender, EventArgs e)
         {
 
             try { 
-            using (var client = new HttpClient())
-            {
-                //  http://aspnet-example-webapi-1stfeb.cloudapps.click2cloud.net/
-                Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
-                //client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiUrl"].ToString());
-                client.BaseAddress = new Uri(Session["WebApiUrl"].ToString());
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                // New code:
-                HttpResponseMessage response = await client.GetAsync(string.Format("api/User/{0}?&passWord={1}",txtUserName.Text,txtPassword.Text));
-                //response.Content.ReadAsStringAsync().Result
-                if (response.IsSuccessStatusCode && !string.IsNullOrEmpty(response.Content.ReadAsStringAsync().Result))
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    tbl_User user = serializer.Deserialize<tbl_User>(response.Content.ReadAsStringAsync().Result.ToString());
-                   Session["UserID"] = user.Guid.ToString();
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                     response = await client.GetAsync("api/Menu/");
-                      serializer = new JavaScriptSerializer();
-                    //WebApiContrib.Formatting.JavaScriptSerializerFormatter serializer = new WebApiContrib.Formatting.JavaScriptSerializerFormatter();
-                    IEnumerable<ADUserDetails> collection = serializer.Deserialize<IEnumerable<ADUserDetails>>(response.Content.ReadAsStringAsync().Result);
-
-                    //List<ADUserDetails> userMenuldt = new List<ADUserDetails>();
-                    //userMenuldt = proxy.GetMenusByGroup(string.Empty).ToList();
-
-                    DataTable dttable = new DataTable();
-                    dttable = ToDataTable(collection);
-
-                    Session["MenuDT"] = dttable;
-                    Response.Redirect("frmProject_Master.aspx", false);
-
-                }
-                else
-                {
-                      FailureText.Text = "Invalid Login Name/Password.";
-                }
-                }
+        
             }
             catch (Exception ex)
             {
