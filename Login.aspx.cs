@@ -57,7 +57,79 @@ namespace TTSHWeb
         }
 
         #region PageLoad
-      
+        protected  void btnLogin_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
+                //"http://localhost:50104/".ToString(); 
+                System.Net.WebClient client = new System.Net.WebClient();
+                client.Headers.Add("content-type", "application/json");//set your header here, you can add multiple headers
+                string arr = client.DownloadString(string.Format("{0}api/User/{1}?&passWord={2}",Session["WebApiUrl"].ToString(),txtUserName.Text,txtPassword.Text));
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                tbl_User user = serializer.Deserialize<tbl_User>(arr);
+                if(user!=null)
+                {
+                    Session["UserID"] = user.Guid.ToString();
+                    FailureText.Text = "Login Success";
+                    client = new System.Net.WebClient();
+                    client.Headers.Add("content-type", "application/json");//set your header here, you can add mu
+                     arr = client.DownloadString(string.Format("{0}api/Menu/", Session["WebApiUrl"].ToString()));
+                    serializer = new JavaScriptSerializer();
+                    IEnumerable<ADUserDetails> collection = serializer.Deserialize<IEnumerable<ADUserDetails>>(arr);
+                    DataTable dttable = new DataTable();
+                    dttable = ToDataTable(collection);
+
+                    Session["MenuDT"] = dttable;
+                   // Response.Redirect("Dashboard.aspx", false);
+                }
+                //using (var client = new  HttpClient())
+                //{
+                //    //  http://aspnet-example-webapi-1stfeb.cloudapps.click2cloud.net/
+                //    Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
+                //    //client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApiUrl"].ToString());
+                //    client.BaseAddress = new Uri(Session["WebApiUrl"].ToString());
+                //    client.DefaultRequestHeaders.Accept.Clear();
+                //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //    // New code:
+                //    HttpResponseMessage response = await client.GetAsync(string.Format("api/User/{0}?&passWord={1}", txtUserName.Text, txtPassword.Text));
+                //    //response.Content.ReadAsStringAsync().Result
+                //    if (response.IsSuccessStatusCode && !string.IsNullOrEmpty(response.Content.ReadAsStringAsync().Result))
+                //    {
+                //        JavaScriptSerializer serializer = new JavaScriptSerializer();
+                //        tbl_User user = serializer.Deserialize<tbl_User>(response.Content.ReadAsStringAsync().Result.ToString());
+
+                //        client.DefaultRequestHeaders.Accept.Clear();
+                //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //        response = await client.GetAsync("api/Menu/").ConfigureAwait(false);
+                //        serializer = new JavaScriptSerializer();
+                //        //WebApiContrib.Formatting.JavaScriptSerializerFormatter serializer = new WebApiContrib.Formatting.JavaScriptSerializerFormatter();
+                //        IEnumerable<ADUserDetails> collection = serializer.Deserialize<IEnumerable<ADUserDetails>>(response.Content.ReadAsStringAsync().Result);
+
+                //        //List<ADUserDetails> userMenuldt = new List<ADUserDetails>();
+                //        //userMenuldt = proxy.GetMenusByGroup(string.Empty).ToList();
+
+                //        DataTable dttable = new DataTable();
+                //        dttable = ToDataTable(collection);
+
+                //        Session["MenuDT"] = dttable;
+                //        Response.Redirect("Dashboard.aspx", false);
+
+                //    }
+                //    else
+                //    {
+                //        FailureText.Text = "Invalid Login Name/Password.";
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                FailureText.Text = "Invalid Login Name/Password.";
+            }
+
+        }
         #endregion
 
         #region Methods
