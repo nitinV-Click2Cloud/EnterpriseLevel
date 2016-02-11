@@ -69,7 +69,7 @@
                             </p>
                             <%--   <input type="text" name="txtdomain" placeholder="Domain Name">--%>
                             <p>
-                                <asp:Button runat="server" CommandName="Login" Text="Login" ID="btnLogin" CssClass="action" OnClick="btnLogin_Click" />
+                                <asp:Button runat="server"  Text="Login" ID="btnLogin" CssClass="action"  />
                             </p>
                             <p style="color:red;">
 
