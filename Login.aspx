@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a class="logo-head img-responsive" href="#">
-                        <img src="~/Images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"></a>
+                        <img src="Images/TanTockSeng-Hospital-Logo.jpg" alt="Clinical Research &amp; Innovation (CRIO)"/></a>
                 </div>
                 <%--<div class="col-md-6">
                 <p class="top-search">
@@ -69,11 +69,11 @@
                             </p>
                             <%--   <input type="text" name="txtdomain" placeholder="Domain Name">--%>
                             <p>
-                                <asp:Button runat="server"  Text="Login" ID="btnLogin" CssClass="action"  />
+                                <asp:Button runat="server" CommandName="Login" Text="Login" ID="btnLogin" CssClass="action" OnClick="btnLogin_Click" />
                             </p>
                             <p style="color:red;">
 
-                                <asp:Label runat="server" ID="FailureText" />
+                                <asp:Literal runat="server" ID="FailureText" />
                             </p>
                         </div>
                     
@@ -86,7 +86,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <img src="~/Images/login-filler.jpg" alt="">
+                    <img src="Images/login-filler.jpg" alt=""></img>
                 </div>
             </div>
         </div>
@@ -111,10 +111,6 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
-
-        <!-- Google Analytics -->
-        <script></script>
     </form>
 </body>
 </html>
