@@ -73,7 +73,7 @@
                             </p>
                             <p style="color:red;">
 
-                                <asp:Literal runat="server" ID="FailureText" />
+                                <asp:Label runat="server" ID="FailureText" />
                             </p>
                         </div>
                     
