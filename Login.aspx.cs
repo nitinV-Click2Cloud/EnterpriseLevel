@@ -62,7 +62,8 @@ namespace TTSHWeb
 
             try
             {
-                Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
+                //Session["WebApiUrl"] = "http://aspnet-example-webapi.cloudapps.click2cloud.net/".ToString();
+                Session["WebApiUrl"] = "http://aspnet-example-apiproj1.cloudapps.click2cloud.net/".ToString();
                 //"http://localhost:50104/".ToString(); 
                 System.Net.WebClient client = new System.Net.WebClient();
                 client.Headers.Add("content-type", "application/json");//set your header here, you can add multiple headers
